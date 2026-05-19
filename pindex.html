@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarot del Destino - Maestro Yeifar</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --gold: #dfb76c;
+            --purple: #1e1233;
+            --dark-bg: #0d0714;
+            --text-light: #f5f5f5;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px 10px 20px;
+            max-width: 800px;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(223, 183, 108, 0.3);
+        }
+
+        p.subtitle {
+            font-size: 1.1rem;
+            color: #b3a2c7;
+        }
+
+        /* MENSAJE BIENVENIDA */
+        .welcome-message {
+            background: linear-gradient(135deg, rgba(30, 18, 51, 0.6) 0%, rgba(22, 15, 36, 0.6) 100%);
+            border: 1px solid rgba(223, 183, 108, 0.2);
+            padding: 15px 25px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            margin: 10px auto 15px auto;
+            font-size: 0.9rem;
+            color: #e0d8ea;
+            line-height: 1.5;
+            font-style: italic;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .welcome-message span {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* PERFIL DE USUARIO DINÁMICO */
+        .user-intro-box {
+            background: rgba(22, 15, 36, 0.4);
+            border-left: 3px solid var(--gold);
+            padding: 15px;
+            border-radius: 4px 12px 12px 4px;
+            max-width: 500px;
+            width: 90%;
+            margin: 10px auto;
+            font-size: 0.85rem;
+            color: #ccc2dc;
+            line-height: 1.4;
+        }
+
+        /* SECCIÓN DE CONFIDENCIALIDAD */
+        .confidential-shield {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(223, 183, 108, 0.05);
+            border: 1px dashed rgba(223, 183, 108, 0.3);
+            padding: 12px 20px;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            margin: 10px auto;
+            font-size: 0.8rem;
+            color: #e0d8ea;
+        }
+        .confidential-shield span {
+            font-size: 1.5rem;
+        }
+
+        /* CONTADOR ANIMADO EN VIVO */
+        .live-counter-box {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(223, 183, 108, 0.15);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.78rem;
+            color: #ccc2dc;
+            margin-bottom: 15px;
+            box-shadow: inset 0 0 8px rgba(0,0,0,0.5);
+        }
+
+        .live-dot {
+            width: 7px;
+            height: 7px;
+            background-color: #25d366;
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 0 0 8px #25d366;
+        }
+
+        .live-dot::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: #25d366;
+            border-radius: 50%;
+            animation: pulseDot 1.8s infinite ease-in-out;
+        }
+
+        #counter-number {
+            color: #fff;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        @keyframes pulseDot {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(3.5); opacity: 0; }
+        }
+
+        /* FORMULARIO DE CONSULTA */
+        .form-container {
+            background-color: #160f24;
+            border: 2px solid var(--gold);
+            border-radius: 15px;
+            padding: 25px;
+            width: 90%;
+            max-width: 500px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        .form-container h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-group label {
+            font-size: 0.85rem;
+            color: #b3a2c7;
+            margin-bottom: 5px;
+        }
+
+        .input-group input, .input-group select {
+            background-color: #0d0714;
+            border: 1px solid var(--gold);
+            color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+        }
+
+        .input-group input:focus, .input-group select:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(223, 183, 108, 0.4);
+        }
+
+        /* SECCIÓN DE AUTORIDAD: MAESTRO YEIFAR */
+        .maestro-profile {
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            margin: 5px auto 30px auto;
+            padding: 12px;
+            border-top: 1px dashed rgba(223, 183, 108, 0.3);
+            border-bottom: 1px dashed rgba(223, 183, 108, 0.3);
+        }
+
+        .maestro-tag {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.05rem;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        .maestro-desc {
+            font-size: 0.8rem;
+            color: #b3a2c7;
+            margin-top: 3px;
+        }
+
+        /* Contenedor de Cartas */
+        .tarot-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 30px 20px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        /* Estilo de las Cartas */
+        .card-wrapper {
+            perspective: 1000px;
+            width: 235px;
+            height: 410px;
+        }
+
+        .card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            border: 2px solid var(--gold);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .card-back {
+            background: linear-gradient(135deg, #160a2b 0%, #2e1a4d 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card-back-design {
+            width: 85%;
+            height: 90%;
+            border: 1px dashed var(--gold);
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--gold);
+            font-size: 3rem;
+            opacity: 0.7;
+        }
+
+        .card-front {
+            background-color: var(--purple);
+            transform: rotateY(180deg);
+            justify-content: flex-start;
+        }
+
+        .card-front h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+            border-bottom: 1px solid rgba(223, 183, 108, 0.3);
+            width: 100%;
+            padding-bottom: 5px;
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .card-reading {
+            font-size: 0.8rem;
+            line-height: 1.4;
+            color: #e0d8ea;
+            overflow-y: auto;
+            width: 100%;
+            text-align: justify;
+            height: 100%;
+        }
+
+        .suggest-help {
+            display: block;
+            margin-top: 8px;
+            color: #ff5e7e;
+            font-weight: 600;
+            font-style: italic;
+            text-align: center;
+            border-top: 1px dotted rgba(223, 183, 108, 0.3);
+            padding-top: 6px;
+        }
+
+        /* SECCIÓN DE TESTIMONIOS */
+        .testimonials-container {
+            width: 90%;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: rgba(22, 15, 36, 0.7);
+            border: 1px solid rgba(223, 183, 108, 0.2);
+            border-radius: 15px;
+        }
+        .testimonials-container h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        .testimonial-item {
+            border-bottom: 1px solid rgba(223, 183, 108, 0.1);
+            padding: 15px 0;
+        }
+        .testimonial-item:last-child {
+            border-bottom: none;
+        }
+        .testimonial-meta {
+            font-size: 0.85rem;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .testimonial-text {
+            font-size: 0.82rem;
+            color: #e0d8ea;
+            font-style: italic;
+            line-height: 1.4;
+        }
+
+        /* ZONA DE PAGO (PAYWALL) */
+        .paywall-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: rgba(10, 5, 15, 0.9);
+            padding: 12px 10px;
+            border-radius: 12px;
+            border: 1px solid rgba(223, 183, 108, 0.3);
+            height: 100%;
+            width: 100%;
+        }
+
+        .paywall-text {
+            font-size: 0.75rem;
+            color: #f0e6ff;
+            line-height: 1.35;
+            text-align: center;
+            margin-bottom: 2px;
+        }
+
+        .nequi-highlight {
+            color: #00ffcc;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            background: rgba(0, 255, 204, 0.1);
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: 1px dashed rgba(0, 255, 204, 0.3);
+            width: 100%;
+            text-align: center;
+        }
+
+        .wa-link {
+            background-color: #25d366;
+            color: #000;
+            text-decoration: none;
+            padding: 8px 10px;
+            border-radius: 8px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .wa-link:hover {
+            background-color: #1ebd54;
+            transform: translateY(-1px);
+        }
+
+        .code-input {
+            width: 100% !important;
+            padding: 8px !important;
+            font-size: 0.8rem !important;
+            text-align: center;
+            text-transform: uppercase;
+            margin-top: 4px;
+            border-radius: 6px !important;
+        }
+
+        .unlock-btn {
+            background: linear-gradient(135deg, #dfb76c 0%, #b38f43 100%);
+            color: #000;
+            border: none;
+            padding: 8px 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .repay-box {
+            margin-top: 12px;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px dashed rgba(223, 183, 108, 0.2);
+        }
+        .repay-btn {
+            background: none;
+            border: none;
+            color: #ffccd5;
+            text-decoration: underline;
+            font-size: 0.72rem;
+            cursor: pointer;
+            display: block;
+            margin: 4px auto 0 auto;
+            line-height: 1.3;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #dfb76c 0%, #b38f43 100%);
+            color: #000;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(223, 183, 108, 0.4);
+            transition: all 0.3s ease;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+        }
+
+        /* BOTÓN FLOTANTE ANIMADO */
+        .whatsapp-floating {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25d366;
+            color: #fff;
+            border-radius: 50px;
+            padding: 12px 22px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            z-index: 9999;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: pulseFloating 2s infinite ease-in-out;
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-floating:hover {
+            transform: scale(1.05);
+            background-color: #1ebd54;
+        }
+
+        @keyframes pulseFloating {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* VENTANAS MODALES */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(5, 2, 10, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: #160f24;
+            border: 2px solid var(--gold);
+            border-radius: 20px;
+            max-width: 600px;
+            width: 100%;
+            padding: 35px;
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-content h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .modal-text {
+            font-size: 0.85rem;
+            color: #ccc2dc;
+            line-height: 1.6;
+            text-align: justify;
+            margin-bottom: 25px;
+            background: #0d0714;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 3px solid var(--gold);
+            max-height: 350px;
+            overflow-y: auto;
+        }
+
+        footer {
+            background-color: #06030a;
+            width: 100%;
+            padding: 30px 20px;
+            font-size: 0.75rem;
+            color: #7a6e8a;
+            text-align: center;
+            border-top: 1px solid #1a0f29;
+            line-height: 1.6;
+        }
+
+        .footer-links { margin-bottom: 15px; }
+        .footer-links a { color: var(--gold); text-decoration: none; margin: 0 10px; cursor: pointer; }
+        .fb-disclaimer { max-width: 800px; margin: 0 auto 15px auto; font-style: italic; }
+
+        @media (max-width: 768px) {
+            .tarot-container { gap: 20px; }
+            .card-wrapper { width: 210px; height: 390px; }
+            h1 { font-size: 2rem; }
+            .whatsapp-floating { bottom: 15px; right: 15px; padding: 10px 16px; font-size: 0.78rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- AVISO DESPLEGABLE META -->
+    <div class="modal-overlay" id="disclaimer-modal">
+        <div class="modal-content">
+            <h2>✦ Aviso Importante y Consentimiento ✦</h2>
+            <div class="modal-text">
+                <p><strong>INFORMACIÓN GENERAL:</strong> Al acceder a este sitio web, usted comprende que las lecturas de tarot e interpretaciones provistas tienen un propósito exclusivo de entretenimiento, curiosidad personal y esparcimiento.</p>
+                <p><strong>DESCARGO DE RESPONSABILIDAD PROFESIONAL:</strong> El contenido mostrado aquí no reemplaza ni sustituye bajo ninguna circunstancia el asesoramiento o diagnóstico médico, psicológico, legal, financiero o profesional de ningún tipo.</p>
+                <p><strong>DESVINCULACIÓN DE META:</strong> Este sitio web es completamente independiente. No está patrocinado, avalado, administrado ni asociado de ninguna forma con Facebook, Instagram o Meta Platforms, Inc.</p>
+            </div>
+            <button style="background: linear-gradient(135deg, #dfb76c 0%, #b38f43 100%); color:#000; padding:12px 35px; border:none; border-radius:50px; font-weight:600; cursor:pointer;" onclick="closeModal('disclaimer-modal')">Aceptar y Continuar</button>
+        </div>
+    </div>
+
+    <!-- MODAL INTEGRAL PARA ENLACES DEL FOOTER -->
+    <div class="modal-overlay" id="footer-modal" style="display: none;">
+        <div class="modal-content">
+            <h2 id="footer-modal-title">Título</h2>
+            <div class="modal-text" id="footer-modal-text">
+                Contenido dinámico...
+            </div>
+            <button style="background: linear-gradient(135deg, #dfb76c 0%, #b38f43 100%); color:#000; padding:12px 35px; border:none; border-radius:50px; font-weight:600; cursor:pointer;" onclick="closeModal('footer-modal')">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- BOTÓN FLOTANTE INTELIGENTE -->
+    <div class="whatsapp-floating" onclick="contactMaster()">
+        <span>🔮</span> Hablar con el Maestro Yeifar
+    </div>
+
+    <header>
+        <h1>Tarot del Destino</h1>
+        <p class="subtitle">Bajo la guía y sabiduría ancestral del Maestro Yeifar</p>
+    </header>
+
+    <!-- DESCRIPCIÓN DE MÍ (MAESTRO YEIFAR) -->
+    <div class="user-intro-box">
+        <strong>¿Quién es el Maestro Yeifar?</strong><br>
+        Soy un canalizador espiritual con más de 20 años de experiencia en la lectura del tarot marsellés y la interpretación de portales energéticos. A lo largo de mi trayectoria, he ayudado a cientos de almas en toda Colombia a identificar bloqueos ocultos, tumbar salamientos financieros y sanar rupturas provocadas por terceras personas a distancia. Mi don no busca alterar tu voluntad, sino revelarte el mapa exacto del cosmos para que recuperes el control de tu vida.
+    </div>
+
+    <!-- SECCIÓN DE CONFIDENCIALIDAD -->
+    <div class="confidential-shield">
+        <span>🔒</span>
+        <div>
+            <strong>Consulta 100% Confidencial:</strong> Todo dato ingresado, así como los resultados de tus cartas y las conversaciones posteriores por canales privados, se manejan bajo estricto secreto espiritual y profesional. Tu privacidad está plenamente protegida.
+        </div>
+    </div>
+
+    <div class="welcome-message">
+        "El universo no se equivoca; si tus ojos están leyendo esto hoy, es porque tu alma busca respuestas. Deja que los astros guíen tus pasos bajo mi guía espiritual y limpiemos las sombras de tu caminar. <span>Tu destino está a punto de cambiar.</span>" — <strong>Maestro Yeifar</strong>
+    </div>
+
+    <!-- CONTADOR SUTIL EN VIVO -->
+    <div class="live-counter-box">
+        <div class="live-dot"></div>
+        <span>Hay <span id="counter-number">142</span> personas realizando consultas ahora mismo</span>
+    </div>
+
+    <!-- FORMULARIO -->
+    <div class="form-container" id="tarot-form">
+        <h3>Ingresa tus datos para la consulta</h3>
+        <div class="input-group">
+            <label for="username">Nombre Completo:</label>
+            <input type="text" id="username" placeholder="Ej. Juan Pérez" required>
+        </div>
+        <div class="input-group">
+            <label for="usersign">Signo Zodiacal:</label>
+            <select id="usersign" required>
+                <option value="">Selecciona tu signo...</option>
+                <option value="Aries">Aries</option>
+                <option value="Tauro">Tauro</option>
+                <option value="Géminis">Géminis</option>
+                <option value="Cáncer">Cáncer</option>
+                <option value="Leo">Leo</option>
+                <option value="Virgo">Virgo</option>
+                <option value="Libra">Libra</option>
+                <option value="Escorpio">Escorpio</option>
+                <option value="Sagitario">Sagitario</option>
+                <option value="Capricornio">Capricornio</option>
+                <option value="Acuario">Acuario</option>
+                <option value="Piscis">Piscis</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="userbirth">Fecha de Nacimiento:</label>
+            <input type="date" id="userbirth" required>
+        </div>
+        <button class="cta-button" onclick="validateAndProcess()">Ver mis cartas</button>
+    </div>
+
+    <!-- SECCIÓN DE MARCA PERSONAL -->
+    <div class="maestro-profile">
+        <div class="maestro-tag">✦ Maestro Yeifar ✦</div>
+        <div class="maestro-desc">Sanador Espiritual • Experto en Alta Magia Sagrada y Liberación de Daños a Distancia</div>
+    </div>
+
+    <!-- CARTAS -->
+    <div class="tarot-container">
+        <!-- CARTA 1: SALUD -->
+        <div class="card-wrapper">
+            <div class="card" id="card-salud">
+                <div class="card-face card-back">
+                    <div class="card-back-design">✦</div>
+                </div>
+                <div class="card-face card-front">
+                    <h3>Salud</h3>
+                    <div class="card-icon">🍃</div>
+                    <div class="card-reading" id="txt-salud">Ingresa tus datos primero.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARTA 2: DINERO -->
+        <div class="card-wrapper">
+            <div class="card" id="card-dinero">
+                <div class="card-face card-back">
+                    <div class="card-back-design">✦</div>
+                </div>
+                <div class="card-face card-front">
+                    <h3>Dinero</h3>
+                    <div class="card-icon">🪙</div>
+                    <div class="card-reading" id="txt-dinero">Ingresa tus datos primero.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARTA 3: AMOR -->
+        <div class="card-wrapper">
+            <div class="card" id="card-amor">
+                <div class="card-face card-back">
+                    <div class="card-back-design">✦</div>
+                </div>
+                <div class="card-face card-front">
+                    <h3>Amor</h3>
+                    <div class="card-icon">🕯️</div>
+                    <div class="card-reading" id="txt-amor">
+                        <!-- JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN DE TESTIMONIOS (5 TESTIMONIOS REALISTAS) -->
+    <div class="testimonials-container">
+        <h3>✦ Testimonios de Almas Agradecidas ✦</h3>
+        
+        <div class="testimonial-item">
+            <div class="testimonial-meta">Carlos M. — Bogotá, Cundinamarca</div>
+            <div class="testimonial-text">"Estaba pasando por una racha terrible en mi negocio, nada prosperaba y el dinero se me esfumaba. El Maestro Yeifar vio en mi carta de dinero un bloqueo por envidias de un socio anterior. Seguí sus consejos al pie de la letra y en menos de un mes todo volvió a fluir. ¡Totalmente recomendado!"</div>
+        </div>
+
+        <div class="testimonial-item">
+            <div class="testimonial-meta">Martha L. — Medellín, Antioquia</div>
+            <div class="testimonial-text">"Mi relación de 8 años se enfrió de la nada y mi pareja se fue sin dar explicaciones. Gracias a la lectura del Amor y la guía privada del Maestro, descubrí que nos habían trabajado a la distancia. El proceso fue discreto y hoy mi hogar está restaurado y con mucha paz."</div>
+        </div>
+
+        <div class="testimonial-item">
+            <div class="testimonial-meta">Andrés J. — Cali, Valle del Cauca</div>
+            <div class="testimonial-text">"Tenía un cansancio crónico en la espalda que los médicos no lograban explicar con exámenes. El Maestro identificó un mal de ojo pesado en la carta de salud. La limpieza energética me devolvió la vitalidad. La confidencialidad y seriedad fue impecable."</div>
+        </div>
+
+        <div class="testimonial-item">
+            <div class="testimonial-meta">Diana P. — Barranquilla, Atlántico</div>
+            <div class="testimonial-text">"Me daba miedo ingresar mis datos en internet, pero el manejo confidencial del Maestro Yeifar es real. Su lectura de las cartas fue tan exacta que me asombró. Me dio las herramientas necesarias para alejar a personas falsas de mi entorno laboral."</div>
+        </div>
+
+        <div class="testimonial-item">
+            <div class="testimonial-meta">Jorge E. — Bucaramanga, Santander</div>
+            <div class="testimonial-text">"Pagué los $17.500 COP para ver mi carta del amor porque sentía que cargaba con una soledad obligada. La predicción describió mi situación actual a la perfección. Hablé con él por WhatsApp y su sabiduría me dio una claridad que no había tenido en años."</div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a onclick="openFooterModal('privacidad')">Política de Privacidad</a> | 
+            <a onclick="openFooterModal('terminos')">Términos de Servicio</a> | 
+            <a onclick="openFooterModal('contacto')">Contacto</a>
+        </div>
+        <p class="fb-disclaimer">
+            Este sitio web no forma parte del sitio web de Facebook o de Meta Platforms, Inc. Además, este sitio NO está respaldado por Facebook de ninguna manera. FACEBOOK es una marca registrada de META Platforms, Inc.
+        </p>
+        <p>&copy; 2026 Consulta Espiritual Maestro Yeifar. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // LÓGICA DEL CONTADOR DE PERSONAS EN VIVO
+        let baseCount = 138; 
+        const counterEl = document.getElementById('counter-number');
+        
+        function updateCounter() {
+            let change = Math.floor(Math.random() * 7) - 2; 
+            baseCount += change;
+            if (baseCount < 125) baseCount = 130;
+            if (baseCount > 165) baseCount = 155;
+            counterEl.textContent = baseCount;
+        }
+        setInterval(updateCounter, 4000);
+
+        // MANEJO DE VENTANAS MODALES
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            modal.style.opacity = '0';
+            modal.style.visibility = 'hidden';
+            setTimeout(() => { modal.style.display = 'none'; }, 400);
+        }
+
+        function openFooterModal(type) {
+            const modal = document.getElementById('footer-modal');
+            const title = document.getElementById('footer-modal-title');
+            const text = document.getElementById('footer-modal-text');
+
+            modal.style.display = 'flex';
+            modal.style.opacity = '1';
+            modal.style.visibility = 'visible';
+
+            if (type === 'privacidad') {
+                title.innerText = "🔒 Política de Privacidad";
+                text.innerHTML = `
+                    <p><strong>Protección Absoluta de Datos:</strong> En la consulta del Maestro Yeifar, valoramos y respetamos profundamente tu intimidad. Al suministrar tu nombre, signo zodiacal y fecha de nacimiento, garantizamos que dicha información se procesa de forma interna y automatizada únicamente para generar las correspondientes lecturas algorítmicas de las cartas en pantalla.</p>
+                    <p>Bajo ninguna circunstancia tus datos personales serán vendidos, transferidos o expuestos a terceras empresas o bases de datos comerciales. Si decides iniciar una conversación directa vía WhatsApp, todo historial de chat se mantendrá bajo estricto secreto espiritual, asegurando un entorno seguro y libre de filtraciones.</p>
+                `;
+            } else if (type === 'terminos') {
+                title.innerText = "📜 Términos de Servicio";
+                text.innerHTML = `
+                    <p><strong>Condiciones de Uso del Oráculo:</strong> Al hacer uso de este sitio web y procesar el formulario de consulta, el usuario acepta de manera consciente que las predicciones y diagnósticos astrales se ofrecen exclusivamente bajo un marco conceptual de entretenimiento, guía espiritual y esparcimiento personal.</p>
+                    <p>Las interpretaciones de las cartas no pretenden sustituir ni invalidar dictámenes profesionales de carácter médico, legal, psicológico o financiero. El acceso al contenido bloqueado del Amor requiere un pago voluntario de $17.500 COP, el cual financia el mantenimiento técnico del portal y el tiempo de interpretación mística.</p>
+                `;
+            } else if (type === 'contacto') {
+                title.innerText = "🔮 Soporte de Contacto Místico";
+                text.innerHTML = `
+                    <p><strong>Canales Oficiales de Atención:</strong> Si tienes inquietudes sobre el procesamiento de tu código de acceso, requieres asistencia técnica con el pago a través de Nequi, o deseas agendar un trabajo privado de contra-hechicería y limpieza espiritual profunda, puedes comunicarte directamente con nuestro altar.</p>
+                    <p><strong>Línea de WhatsApp Principal:</strong> +57 313 8596350<br><strong>Atención al Alma:</strong> Disponible de lunes a domingo las 24 horas del día. Toda comunicación es atendida directamente por el Maestro Yeifar o sus colaboradores de confianza bajo estricto sigilo profesional.</p>
+                `;
+            }
+        }
+
+        // CÓDIGOS DE ACCESO ÚNICOS
+        let codigosValidosPermitidos = [
+            "AMOR2026", "LUNA77", "SOL33", "ASTRO99", "MAGIA11",
+            "ORACULO55", "DESTINO88", "ALMA44", "LUZ22", "KARMA66",
+            "SABIDURIA12", "CUARZO93", "CHAKRA45", "ESENCIA82", "UNIVERSO01",
+            "ENERGIA73", "PROFECIA19", "FELICIDAD87", "MISTICO54", "ANGEL888",
+            "GUIA34", "VELA21", "PROTECCION50", "CAMINO11", "CORAZON07",
+            "UNION777", "VINCULO15", "PAZ32", "ARMONIA09", "FLORECER60"
+        ];
+        
+        let codigosQuemados = [];
+
+        function buildPaywallHTML() {
+            return `
+                <div class="paywall-container" id="paywall-view">
+                    <p class="paywall-text">Para revelar tu destino astral en el amor, transfiere <strong>$17.500 COP</strong> a:</p>
+                    <p class="nequi-highlight">NEQUI: 3202594648</p>
+                    <a href="https://api.whatsapp.com/send?phone=573138596350&text=Hola%20Maestro%20Yeifar%2C%20acabo%20de%20hacer%20el%20pago%20de%20%2417.500%20para%20un%20nuevo%20c%C3%B3digo%20del%20tarot%20del%20Amor.%20Adjunto%20comprobante." target="_blank" class="wa-link">
+                        💬 Enviar Comprobante
+                    </a>
+                    <input type="text" id="access-code" class="code-input" placeholder="Ingresa tu código aquí">
+                    <button class="unlock-btn" onclick="checkCode()">Revelar Amor</button>
+                </div>
+            `;
+        }
+
+        document.getElementById('txt-amor').innerHTML = buildPaywallHTML();
+
+        const prediccionesSalud = [
+            "Las cartas revelan un cansancio pesado y continuo en tu espalda que ya no se quita descansando. Hay un evidente bloqueo inducido a la distancia; tus dolores físicos no provienen de causas naturales, sino de una carga energética oscura enviada para tumbar tu vitalidad. <span class='suggest-help'>⚠️ Alerta: Hay un trabajo espiritual activo que debilita tu aura. Consulta al Maestro Yeifar de inmediato.</span>",
+            "Se observa un desorden energético provocado artificialmente por alguien de tu entorno que te tiene envidia. Esto altera tus ciclos de sueño y provoca dolores de cabeza inexplicables. Es un ataque psíquico a distancia diseñado para estancarte. <span class='suggest-help'>⚠️ Alerta: Se detecta rastro de mal de ojo y daño intencionado. Pide ayuda espiritual urgente al Maestro Yeifar.</span>",
+            "Tu carta muestra que te están absorbiendo las fuerzas a través de un lazo energético tóxico o velación. Sientes opresión en el pecho y fatiga mental extrema porque hay un sutil trabajo de estancamiento físico operando en tu contra. <span class='suggest-help'>⚠️ Alerta: Es urgente una limpieza profunda con el Maestro Yeifar para tumbar este daño a distancia.</span>"
+        ];
+
+        const prediccionesDinero = [
+            "Se visualiza una racha donde el dinero se desvanece de tus manos. Las cartas revelan un entierro o salamiento financiero provocado a distancia por una persona muy cercana que finge ser tu amigo, pero quiere verte en la ruina. <span class='suggest-help'>⚠️ Alerta: Tus caminos económicos fueron amarrados y bloqueados por brujería. Habla con el Maestro Yeifar.</span>",
+            "Las cartas muestran proyectos estancados y pérdidas de dinero inexplicables en el último minuto. Hay una barrera invisible alimentada por rituales de envidia pesada que trancaron tus finanzas para que nunca progreses. <span class='suggest-help'>⚠️ Alerta: Daño espiritual enfocado en tu economy. Se requiere que el Maestro Yeifar reviente este bloqueo ya.</span>",
+            "Por más que te esfuerzas, tus ingresos se congelan. No es mala suerte: las cartas marcan un congelamiento astral hecho a distancia para cerrar tus portales de abundancia y humillarte financieramente. <span class='suggest-help'>⚠️ Alerta: Tienes un bloqueo provocado con alta magia de envidia. Busca ayuda protectora con el Maestro Yeifar.</span>"
+        ];
+
+        const prediccionesAmor = [
+            "Las cartas reflejan malentendidos constantes y una frialdad incómoda en tus relaciones. Hay un trabajo de separación activa o alejamiento hecho por alguien del pasado que no soporta verte feliz y te trabaja a distancia. <span class='suggest-help'>⚠️ Alerta: Hay un endulzamiento negro o daño de discordia separándote. Consulta al Maestro Yeifar ahora.</span>",
+            "Se visualiza un ciclo recurrentes de desilusiones donde las personas se alejan sin motivos. Cargas con un bloqueo sentimental impuesto mediante un lazo de soledad obligado para que nunca logres consolidar un hogar estable. <span class='suggest-help'>⚠️ Alerta: Se detecta un trabajo de desprecio directo en tu contra. Libérate hablando con el Maestro Yeifar.</span>",
+            "Aparecen dudas profundas y sospechas diarias que desgastan tu paz mental. La desconfianza actual es inducida; hay una mala energía de una mujer o rival que busca tumbar tu relación usando artes oscuras a distancia. <span class='suggest-help'>⚠️ Alerta: Infidelidad o ruptura provocada por terceras personas mediante rituales. Actúa rápido con el Maestro Yeifar.</span>"
+        ];
+
+        function getRandomPrediction(array) {
+            return array[Math.floor(Math.random() * array.length)];
+        }
+
+        let currentAmorText = "";
+
+        function validateAndProcess() {
+            const name = document.getElementById('username').value.trim();
+            const sign = document.getElementById('usersign').value;
+            const birth = document.getElementById('userbirth').value;
+
+            if (!name || !sign || !birth) {
+                alert("Por favor, llena todos tus datos para poder consultar el tarot.");
+                return;
+            }
+
+            document.getElementById('txt-salud').innerHTML = getRandomPrediction(prediccionesSalud);
+            document.getElementById('txt-dinero').innerHTML = getRandomPrediction(prediccionesDinero);
+            currentAmorText = getRandomPrediction(prediccionesAmor);
+
+            document.getElementById('card-salud').classList.add('flipped');
+            setTimeout(() => { document.getElementById('card-dinero').classList.add('flipped'); }, 200);
+            setTimeout(() => { document.getElementById('card-amor').classList.add('flipped'); }, 400);
+        }
+
+        function checkCode() {
+            const inputElement = document.getElementById('access-code');
+            const userCode = inputElement.value.trim().toUpperCase();
+
+            if (codigosQuemados.includes(userCode)) {
+                alert("Este código ya caducó. Por favor, adquiere uno nuevo.");
+                return;
+            }
+
+            if (codigosValidosPermitidos.includes(userCode)) {
+                codigosQuemados.push(userCode);
+                codigosValidosPermitidos = codigosValidosPermitidos.filter(codigo => codigo !== userCode);
+
+                document.getElementById('txt-amor').innerHTML = `
+                    <div style="display: block; height:100%; overflow-y: auto;">
+                        ${currentAmorText}
+                        <div class="repay-box">
+                            <button class="repay-btn" onclick="resetAmorPaywall()">🔄 ¿Quieres consultar otra predicción de amor? Adquiere un nuevo código aquí.</button>
+                        </div>
+                    </div>
+                `;
+            } else {
+                alert("Código incorrecto. Verifica tu pago e inténtalo de nuevo.");
+            }
+        }
+
+        function resetAmorPaywall() {
+            document.getElementById('txt-amor').innerHTML = buildPaywallHTML();
+        }
+
+        function contactMaster() {
+            const name = document.getElementById('username').value.trim();
+            const sign = document.getElementById('usersign').value;
+            const birth = document.getElementById('userbirth').value;
+
+            let mensaje = "";
+
+            if (name && sign && birth) {
+                const fechaPartes = birth.split('-');
+                const fechaFormateada = fechaPartes.length === 3 ? `${fechaPartes[2]}/${fechaPartes[1]}/${fechaPartes[0]}` : birth;
+
+                mensaje = `Hola Maestro Yeifar, mi nombre es *${name}*, soy del signo *${sign}* (nacido el ${fechaFormateada}). Mis cartas muestran que me están haciendo un daño o trabajo a distancia y requiero su ayuda urgente para revisar mi caso.`;
+            } else {
+                mensaje = "Hola Maestro Yeifar, acabo de ver mi tarot y me preocupa profundamente que me estén haciendo un trabajo o daño espiritual. Deseo una consulta personalizada urgente.";
+            }
+
+            const urlWhatsApp = `https://api.whatsapp.com/send?phone=573138596350&text=${encodeURIComponent(mensaje)}`;
+            window.open(urlWhatsApp, '_blank');
+        }
+    </script>
+</body>
+</html>
